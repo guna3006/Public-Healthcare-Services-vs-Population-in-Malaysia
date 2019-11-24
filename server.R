@@ -1,22 +1,16 @@
 # Importing libraries
-#install.packages("dplyr")
+#install.packages(c("rlang", "dplyr", "tidyr", "rgdal","DT","plotrix","rsconnect"), ask=FALSE, checkBuilt=TRUE, dependencies=TRUE)
+library(rlang)
 library(dplyr)
-#install.packages("tidyr")
 library(tidyr)
-#install.packages("leaflet")
 library(leaflet)
-#install.packages("rgdal")
 library(rgdal)
-#install.packages("DT")
 library(DT)
-#install.packages("plotrix")
 library(plotrix)
-#install.packages("rsconnect")
 #library(rsconnect)
 
 # Load map
-
-MYMap <- readOGR(dsn="../Public-Healthcare-Services-vs-Population-in-Malaysia", layer="MYS_adm2")
+MYMap <- readOGR(dsn="/Users/gunasegarran/Documents/R_Group_Assignment", layer="MYS_adm2")
 
 
 
@@ -27,9 +21,9 @@ MYMap <- spTransform(MYMap, CRS("+init=epsg:4326"))
 bounds <- bbox(MYMap)
 
 # Load datasets 
-district_population <-read.csv("../Public-Healthcare-Services-vs-Population-in-Malaysia/District_Population.csv")
-Hospital_Kerajaan <- read.csv("../Public-Healthcare-Services-vs-Population-in-Malaysia/Hospital_Kerajaan.csv")
-Klinik_Kesihatan_Kerajaan <- read.csv("../Public-Healthcare-Services-vs-Population-in-Malaysia/Klinik_Kesihatan_Kerajaan.csv")
+district_population <-read.csv("/Users/gunasegarran/Documents/R_Group_Assignment/District_Population.csv")
+Hospital_Kerajaan <- read.csv("/Users/gunasegarran/Documents/R_Group_Assignment/Hospital_Kerajaan.csv")
+Klinik_Kesihatan_Kerajaan <- read.csv("/Users/gunasegarran/Documents/R_Group_Assignment/Klinik_Kesihatan_Kerajaan.csv")
 
 colMax <- function(data) sapply(data, max, na.rm = TRUE)
 colMin <- function(data) sapply(data, min, na.rm = TRUE)
@@ -159,6 +153,12 @@ function(input, output, session){
       barplot(Pop_State$Total, main = plotlabel, ylim=c(0,1500000), xlab = "District", ylab = "Population", col = Pop_State$NAME_2, names.arg = Pop_State$NAME_2, horiz=FALSE)
     })
     
+    output$Box <- renderPlot ({
+      plotlabel <- paste("Population Fraction in",state_selected)
+      format(Pop_State$Total, scientific=FALSE)
+      boxplot(Pop_State$Total, main = plotlabel, ylim=c(0,1500000), xlab = "District", ylab = "Population", col = Pop_State$NAME_2, names.arg = Pop_State$NAME_2, horiz=FALSE)
+    })
+    
   })
   
   
@@ -171,4 +171,4 @@ function(input, output, session){
   
   
   
-}"# Public-Healthcare-Services-vs-Population-in-Malaysia" 
+}

@@ -1,9 +1,7 @@
-WQD7001 - Principles of Data Science
-
-Public Healthcare Services vs Hospitals Location in Malaysia
+Healthcare Centre Proposition Based On Location & Population In Malaysia
 ========================================================
-author: Gunasegarran Magadevan, Hafifi Yahya and Faez Murshidi
-date: 19 Dec 2017
+author: Gunasegarran Magadevan
+date: 24 November 2019
 autosize: true
 
 Problem Statement
@@ -76,7 +74,3 @@ Conclusion
 - From our own initial observation, there are some distict that may need to revise for additional hospital as to accomodate high concentration of population such as Batu Pahat, Alor Setar, Sg Petani, Kota Bharu, Pasir Mas, Seremban, Kuantan, Lahad Datu, Tawau , Miri and Sibu.
 
 - In future, the app can be upgraded to add more on government's public facilities such as main roads, bus stations, schools etc for the purpose of monitoring and planning (provided with the data is available).
-
-
-
-
